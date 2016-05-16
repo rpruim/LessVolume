@@ -902,10 +902,7 @@ Additional R skills can be added as needed later.
 
 ## Elsewhere at eCOTS
 
-Mon @ 1:00 - 1:30	*Changing with technology to facilitate learning: Ideas for using technology to find new ways to help students to achieve learning outcomes*
-with Bethany White and Alison Gibbs
-
-Tue @ 2:15 - 5:00	Breakout Sessions: *Teaching with R*
+**Tue @ 2:15 - 5:00**	Breakout Sessions: *Teaching with R*
 
   * *Technology lowering barriers: get started with R at the snap of a finger*
 with Mine Cetinkaya-Rundel and Nicholas Horton
@@ -916,11 +913,11 @@ with Mine Cetinkaya-Rundel and Nicholas Horton
 with Chester Ismay and Andrew Bray
 
 
-Wed  @ 2:00 - 2:45 Panel:
+**Wed  @ 2:00 - 2:45 Panel:**
 *Teaching with R: Free and Extendable*
 with JJ Allaire, Mine Cetinkaya-Rundel, Chester Ismay, and R Pruim
 
-Fri @ 1:30 - 2:00	BOF: *Teaching with R and RStudio* with R Pruim 
+**Fri @ 1:30 - 2:00	BOF:** *Teaching with R and RStudio* with R Pruim 
 and N Horton
 
 
