@@ -896,7 +896,7 @@ Additional R skills can be added as needed later.
     * A Student's Guide to R
     * Start R in Calculus
  
- * [https://cdn.rawgit.com/ProjectMOSAIC/mosaic/master/vignettes/mosaic-resources.Rmd](Resources Vignette)
+ * [Resources Vignette](https://cdn.rawgit.com/ProjectMOSAIC/mosaic/master/vignettes/mosaic-resources.Rmd)
     * Available in package and via github
     * Links to companion volumes for several texts (Lock5, ISI, Statistical Slueth, IPS)
 
