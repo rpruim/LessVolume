@@ -7,7 +7,7 @@ output:
     theme: simple
     highlight: pygments
     center: false
-    css: LessVolume.css
+    css: ../LessVolume.css
     fig_width: 8
     fig_height: 3
 ---
@@ -15,13 +15,13 @@ output:
 
 ## Outline
 
- * Some history & philosophy
+ * Introduction to Less Volume, More Creativity Approach
  * The most important template
  * A few other things
  * Simulation-based inference
  
 
-# Some History and Philosophy
+# Introduction
 
 
 ```{r, cache = FALSE, include = FALSE}
@@ -74,7 +74,7 @@ Nick Horton<br>Amherst
 ![NSF  ](https://www.nsf.gov/images/logos/nsf1.jpg)
 </center>
 
-## The Less Volume, More Creativity Approach
+## Less Volume, More Creativity
 
 Aim for an R toolkit that is
 
@@ -82,6 +82,7 @@ Aim for an R toolkit that is
  * **coherent**:  commands should be as similar as possible
  * **powerful**: can do what needs doing 
  
+<br><br>
 <table>
 <tr>
 <td>
@@ -95,6 +96,20 @@ Perfection is achieved, not when there is nothing more to add, but when there is
 </table>
 
 
+## The mosaic package
+ 
+The `mosaic` package attempts to facilitate a Less Volume, More Creativity
+approach.
+
+  * available via CRAN and github (ProjectMOSAIC/mosaic)
+  
+### Main parts of the package
+
+  * expanded support for the "formula template" (main topic today)
+  * simplified graphics
+  * support for simulation-based inference with `do()`
+  * some odds and ends
+
  
 ## The Minimal R Exercise
 
@@ -106,20 +121,16 @@ Perfection is achieved, not when there is nothing more to add, but when there is
 
 **Replace** dissimilar tools with more similar tools
 
+<br>
+
 **Aim** for a set of commands that is
 
  * **small**: fewer is better
  * **coherent**:  commands should be as similar as possible
  * **powerful**: can do what needs doing 
 
+<br>
 **Result:** [Minimal R for Intro Stats ](https://github.com/ProjectMOSAIC/mosaic/blob/master/vignettes/MinimalR.pdf)
-
-## The mosaic package
- 
-The `mosaic` package attempts to be part of one Less Volume, More Creativity
-approach.
-
-  * available via CRAN and github (ProjectMOSAIC/mosaic)
 
 ## A few R details
 
@@ -219,7 +230,7 @@ xyplot(births ~ date, data = Births78)
 ## How do we make this plot?
 
 ```{r, fig.width = 8, fig.height = 3.0, out.height = 400, fig.align = "center", echo = FALSE, out.width = "60%", out.height = "35%"}
-xyplot( births ~ date, data = Births78) 
+xyplot(births ~ date, data = Births78) 
 ```
 
 ### What is the Goal?
@@ -234,7 +245,7 @@ xyplot( births ~ date, data = Births78)
 ## How do we make this plot?
 
 ```{r, fig.width = 8, fig.height = 3.0, out.height = 400, fig.align = "center", echo = FALSE, out.width = "60%", out.height = "35%"}
-xyplot( births ~ date, data = Births78) 
+xyplot(births ~ date, data = Births78) 
 ```
 
 ### What is the Goal?
@@ -249,7 +260,7 @@ xyplot( births ~ date, data = Births78)
 ## How do we tell R to make this plot?
 
 ```{r, fig.width = 8, fig.height = 3.0, out.height = 400, fig.align = "center", echo = FALSE, out.width = "60%", out.height = "35%"}
-xyplot( births ~ date, data = Births78) 
+xyplot(births ~ date, data = Births78) 
 ```
 
 ### What is the Goal?
@@ -272,7 +283,7 @@ xyplot( births ~ date, data = Births78)
 &nbsp;
 
 ```{r, fig.width = 8, fig.height = 2.5, out.height = 300, fig.align = "center", echo = TRUE}
-xyplot( births ~ date, data = Births78) 
+xyplot(births ~ date, data = Births78) 
 ```
 
 ## What changes for this plot?
@@ -323,7 +334,11 @@ bwplot( substance ~ age, data = HELPrct)
 
 
 ```{r, echo = TRUE, fig.height = 2.5}
-bwplot( substance ~ age, data = HELPrct )
+bwplot(substance ~ age, data = HELPrct)
+```
+
+```{r, echo = TRUE, fig.height = 2.0}
+bwplot(age ~ substance, data = HELPrct)
 ```
 
 
@@ -427,28 +442,24 @@ densityplot( ~ age | sex, data = HELPrct,
  
 My approach: 
 
- * Let the students ask or 
- * Let the data analysis drive 
+ * Let the students ask, or 
+ * let the data analysis drive 
  * `mplot()`
 
 ## Bells and Whistles
 
 
 ```{r, fig.width = 9, fig.height = 3, out.height = 300, fig.align = "center", tidy = FALSE}
-require(lubridate)
-xyplot( births ~ date, data = Births78,  
-  groups = wday(date, label = TRUE, abbr = TRUE), 
+xyplot(births ~ date, data = Births78, groups = wday,
   type = 'l',
   auto.key = list(columns = 4, lines = TRUE, points = FALSE),
-  par.settings = list(
-    superpose.line = list( lty = 1 ) ))
+  par.settings = list(superpose.line = list( lty = 1 ) ))
 ```
 ```{r, eval = FALSE, include = FALSE}
-xyplot( births ~ date, data = Births78,  
-        groups = wday(date, label = TRUE, abbr = TRUE), type = 'l',
+xyplot(births ~ date, data = Births78,  
+        groups = wday, type = "l",
         auto.key = list(columns = 4),
-        superpose.symbol = list(
-            pch = 16, cex = 1.2, alpha = .8)))
+        superpose.symbol = list(pch = 16, cex = 1.2, alpha = .8)))
 ```
 
 
@@ -491,12 +502,18 @@ tally( ~ substance, data = HELPrct)
 
 ## Numerical Summaries: Two Variables
 
-Three ways to think about this.  All do the same thing.
-```{r,eval = FALSE}
-sd(   age ~ substance, data = HELPrct )
-sd( ~ age | substance, data = HELPrct )
-sd( ~ age, groups = substance, data = HELPrct )
+Three ways to create a plot with two variables.
+All three can be used to get corresponding numerical summaries.
+
+```{r, eval = FALSE}
+     xyplot(age ~ substance, data = HELPrct, jitter.x = TRUE)
+         sd(age ~ substance, data = HELPrct)
+     bwplot( ~ age | substance, data = HELPrct)
+         sd( ~ age | substance, data = HELPrct)
+densityplot( ~ age , groups = substance, data = HELPrct)
+         sd( ~ age , groups = substance, data = HELPrct)
 ```
+
 ```{r, echo = FALSE}
 sd( ~ age, groups = substance, data = HELPrct )
 ```
@@ -531,27 +548,20 @@ data(HELPrct)
 
 ## One Template to Rule a Lot
 
-
  * single and multiple variable graphical summaries
  * single and multiple variable numerical summaries
  * hypothesis tests and confidence intervals
  * linear models
- 
-```{r, eval = FALSE}
-  mean( age ~ sex, data = HELPrct )
-bwplot( age ~ sex, data = HELPrct ) 
-t.test( age ~ sex, data = HELPrct )
-    lm( age ~ sex, data = HELPrct )
-```
-    
-```{r, eval = FALSE}
-   t.test( ~ age, data = HELPrct )
-prop.test( ~ sex, data = HELPrct )
-```
 
-```{r, include = FALSE}
-  mean( age ~ sex, data = HELPrct )
-    coef(lm( age ~ sex, data = HELPrct ))
+### Example Workflow
+
+```{r, eval = FALSE}
+  bwplot(age ~ sex, data = HELPrct) 
+    mean(age ~ sex, data = HELPrct)
+      sd(age ~ sex, data = HELPrct)
+favstats(age ~ sex, data = HELPrct)
+  t.test(age ~ sex, data = HELPrct)
+      lm(age ~ sex, data = HELPrct)
 ```
 
  * Note: We can do all of this without any square brackets or dollar signs.
@@ -563,12 +573,15 @@ prop.test( ~ sex, data = HELPrct )
 The `mosaic` package includes some other things, too
 
  * Data sets (you've already seen some of them)
+ * Support for SBI via `do()`
  * xtras: `xchisq.test()`, `xpnorm()`, `xqqmath()`
  * `mplot()` 
-   * `mplot(HELPrct)` interactive plot creation
-   * replacements for `plot()` in some situations
- * simplified `histogram()` controls (e.g., `width`)
- * simplified ways to add onto lattice plots
+    * `mplot(HELPrct)` interactive plot creation
+    * replacements for `plot()` in some situations
+ * simplified plotting
+    * additional `histogram()` controls (e.g., `width`)
+    * simplified ways to add onto lattice plots
+    * simple plots of models and functions
 
 ## xpnorm()
 
@@ -873,3 +886,53 @@ Additional R skills can be added as needed later.
 
  *If R is the hardest part of your course, then your R is too hard 
    and your questions are too easy.*
+
+# Additional Resources
+
+## mosaic resources
+
+  * Little Books [https://github.com/ProjectMOSAIC/LittleBooks](https://github.com/ProjectMOSAIC/LittleBooks)
+    * Start Teaching with R
+    * A Student's Guide to R
+    * Start R in Calculus
+ 
+ * [https://cdn.rawgit.com/ProjectMOSAIC/mosaic/master/vignettes/mosaic-resources.Rmd](Resources Vignette)
+    * Available in package and via github
+    * Links to companion volumes for several texts (Lock5, ISI, Statistical Slueth, IPS)
+
+## Elsewhere at eCOTS
+
+Mon @ 1:00 - 1:30	*Changing with technology to facilitate learning: Ideas for using technology to find new ways to help students to achieve learning outcomes*
+with Bethany White and Alison Gibbs
+
+Tue @ 2:15 - 5:00	Breakout Sessions: *Teaching with R*
+
+  * *Technology lowering barriers: get started with R at the snap of a finger*
+with Mine Cetinkaya-Rundel and Nicholas Horton
+
+  * *Notebooks with R Markdown* with JJ Allaire
+  
+  * *Lowering the barriers to inclusive, collaborative, reproducible analyses*
+with Chester Ismay and Andrew Bray
+
+
+Wed  @ 2:00 - 2:45 Panel:
+*Teaching with R: Free and Extendable*
+with JJ Allaire, Mine Cetinkaya-Rundel, Chester Ismay, and R Pruim
+
+Fri @ 1:30 - 2:00	BOF: *Teaching with R and RStudio* with R Pruim 
+and N Horton
+
+
+## Elsewhere at eCOTS
+
+### Posters
+
+  * *R-Shiny Apps to Empower a Simulation-Based Curriculum*, 
+Allison Theobold & Jim Robison-Cox, Montana State University
+
+  * *Dynamic Data in the Classroom*, Jo Hardin, Pomona College
+
+  * *Writing about Simulations in a Theoretical Statistics Course*, Amy Wagaman, Amherst College
+
+  * *Interactive Math Stat Visualizations Using R Shiny*, Justin Post, North Carolina State University
