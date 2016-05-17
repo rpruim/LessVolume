@@ -604,7 +604,7 @@ data(HELPrct)
  * single and multiple variable graphical summaries
  * single and multiple variable numerical summaries
  * hypothesis tests and confidence intervals
- * linear models
+ * linear models and ANOVA
 
 ### Example Workflow: How does age differ by sex?
 
