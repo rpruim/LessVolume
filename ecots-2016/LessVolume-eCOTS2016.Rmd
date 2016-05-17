@@ -1,7 +1,7 @@
 ---
 title: "Less Volume, More Creativity -- Introducing R to Beginners"
 author: "Randall Pruim and Nicholas J Horton"
-date: "eCOTS 2016"
+date: "eCOTS -- 17 May 2016"
 output:
   revealjs::revealjs_presentation:
     theme: simple
@@ -38,7 +38,7 @@ require(mosaic)
 
 ## Outline
 
- * Introduction to Less Volume, More Creativity Approach
+ * **Introduction to Less Volume, More Creativity Approach**
  * **The most important template**
  * A few other things
  * Simulation-based inference
@@ -177,6 +177,30 @@ approach.
  * If you see a + prompt, it means R is waiting for more input
  * If this is unintentional, you probably have a typo
  * ESC will get you back to the command prompt
+
+## How to play along from home
+
+  * You can use your own R, but make sure `mosaic` is installed from CRAN (or github)
+  
+```{r, eval=FALSE}
+# install from CRAN
+install.packages("mosaic")  
+```
+
+  * You can use a temporary RStudio server account
+  
+    * get username and password at 
+      [http://tinyurl.com/ecots-rstudio](http://tinyurl.com/ecots-rstudio)  
+      
+  * Be sure to attach the `mosaic` package
+
+```{r, message = FALSE}
+require(mosaic)
+```
+    
+  * Slides are available at
+    [http://tinyurl.com/mosaic-ecots2016](http://tinyurl.com/mosaic-ecots2016)
+
 
 # The most important template
 
@@ -336,7 +360,7 @@ bwplot( age ~ substance, data = HELPrct, xlab = "substance" )
 
 
 
-## Coparing our first two plots
+## Comparing our first two plots
 
 
 ```{r, echo = TRUE, fig.height = 2.0}
