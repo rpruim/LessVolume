@@ -73,7 +73,7 @@ opts_chunk$set(
   )
 ```
 
-## Danny, Nick, and the NSF
+## The mosaic team
 
 <center>
 <table>
@@ -86,10 +86,17 @@ Danny Kaplan<br>Macalester
 </center>
 </td>
 <td>
-![Nick ](../images/Horton.jpeg)
+![Nick](../images/Horton.jpeg)
 <br>
 <center>
 Nick Horton<br>Amherst
+</center>
+</td>
+<td>
+![Randy](../images/Pruim-small.jpg)
+<br>
+<center>
+Randy Pruim<br>Calvin
 </center>
 </td>
 </tr>
@@ -245,12 +252,6 @@ goal( formula , data = mydata )
 
  * This determines the inputs to the function
  * Must identify the variables and data frame
-
-## How do we make this plot?
-
-```{r, fig.width=8, fig.height=3, out.height=400, fig.align="center", echo = FALSE}
-xyplot(births ~ date, data = Births78) 
-```
 
 ## How do we make this plot?
 
