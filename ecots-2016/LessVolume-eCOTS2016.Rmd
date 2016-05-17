@@ -712,6 +712,30 @@ plotModel(model)
 
 ## SBI -- You can do() it!
 
+```{r, include = FALSE}
+r <- 2
+```
+
+```{r, size = "tiny", echo = TRUE, results = "hide"}
+do(r) * mean(~ age,       data = resample(HELPrct))
+do(r) * prop(~ homeless,  data = resample(HELPrct))
+
+do(r) * diffmean(age ~ sex, 
+                 data = resample(HELPrct))
+do(r) * diffmean(age ~ sex, 
+                 data = resample(HELPrct, groups = sex))
+
+do(r) * diffprop(homeless ~ sex, 
+                 data = resample(HELPrct))
+do(r) * diffprop(homeless ~ sex, 
+                 data = resample(HELPrct, groups = sex))
+```
+
+```{r, eval = FALSE}
+# residual resampling
+Kids.lm <- lm(length ~ width * sex, data = KidsFeet)
+do(r) * lm(length ~ width * sex, data = resample(Kids.lm))
+```
 
 ## Lady Tasting Tea
 
@@ -949,13 +973,12 @@ Additional R skills can be added as needed later.
     * A Student's Guide to R
     * Start R in Calculus
  
- * [Resources Vignette](https://cdn.rawgit.com/ProjectMOSAIC/mosaic/master/vignettes/mosaic-resources.Rmd)
-    * Available in package and via github
-    * Links to companion volumes for several texts 
-      * Unlocking the Power of Data (Lock5)
-      * Intorduction to Statistiscal Investigations (Tintle et al)
-      * Statistical Slueth (Ramsey and Shafer)
-      * Introduction to the Practice of Statistics (Moore, McCabe, Craig)
+ * [Resources Vignette](https://github.com/ProjectMOSAIC/mosaic/blob/master/vignettes/mosaic-resources.Rmd) includes links to companion volumes to several text books.
+      * *Statistics: Unlocking the Power of Data* (Lock5)
+      * *Intorduction to Statistiscal Investigations* (Tintle et al)
+      * *Statistical Slueth* (Ramsey and Shafer)
+      * *Introduction to the Practice of Statistics* (Moore, McCabe, Craig)
+      * *Stats: Data and Models* (De Veaux, Velleman, Bock)
 
 ## Elsewhere at eCOTS
 

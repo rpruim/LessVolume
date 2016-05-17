@@ -691,6 +691,21 @@ Width &lt;-<span class="st"> </span><span class="kw">makeFun</span>(model)
 </section></section>
 <section><section id="simulation-based-inference" class="titleslide slide level1"><h1>Simulation Based Inference</h1></section><section id="sbi-you-can-do-it" class="slide level2">
 <h1>SBI – You can do() it!</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">do</span>(r) *<span class="st"> </span><span class="kw">mean</span>(~<span class="st"> </span>age,       <span class="dt">data =</span> <span class="kw">resample</span>(HELPrct))
+<span class="kw">do</span>(r) *<span class="st"> </span><span class="kw">prop</span>(~<span class="st"> </span>homeless,  <span class="dt">data =</span> <span class="kw">resample</span>(HELPrct))
+
+<span class="kw">do</span>(r) *<span class="st"> </span><span class="kw">diffmean</span>(age ~<span class="st"> </span>sex, 
+                 <span class="dt">data =</span> <span class="kw">resample</span>(HELPrct))
+<span class="kw">do</span>(r) *<span class="st"> </span><span class="kw">diffmean</span>(age ~<span class="st"> </span>sex, 
+                 <span class="dt">data =</span> <span class="kw">resample</span>(HELPrct, <span class="dt">groups =</span> sex))
+
+<span class="kw">do</span>(r) *<span class="st"> </span><span class="kw">diffprop</span>(homeless ~<span class="st"> </span>sex, 
+                 <span class="dt">data =</span> <span class="kw">resample</span>(HELPrct))
+<span class="kw">do</span>(r) *<span class="st"> </span><span class="kw">diffprop</span>(homeless ~<span class="st"> </span>sex, 
+                 <span class="dt">data =</span> <span class="kw">resample</span>(HELPrct, <span class="dt">groups =</span> sex))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># residual resampling</span>
+Kids.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(length ~<span class="st"> </span>width *<span class="st"> </span>sex, <span class="dt">data =</span> KidsFeet)
+<span class="kw">do</span>(r) *<span class="st"> </span><span class="kw">lm</span>(length ~<span class="st"> </span>width *<span class="st"> </span>sex, <span class="dt">data =</span> <span class="kw">resample</span>(Kids.lm))</code></pre></div>
 </section><section id="lady-tasting-tea" class="slide level2">
 <h1>Lady Tasting Tea</h1>
 <ul>
@@ -925,14 +940,13 @@ Width &lt;-<span class="st"> </span><span class="kw">makeFun</span>(model)
 <li>A Student’s Guide to R</li>
 <li>Start R in Calculus</li>
 </ul></li>
-<li><a href="https://cdn.rawgit.com/ProjectMOSAIC/mosaic/master/vignettes/mosaic-resources.Rmd">Resources Vignette</a>
+<li><a href="https://github.com/ProjectMOSAIC/mosaic/blob/master/vignettes/mosaic-resources.Rmd">Resources Vignette</a> includes links to companion volumes to several text books.
 <ul>
-<li>Available in package and via github</li>
-<li>Links to companion volumes for several texts</li>
-<li>Unlocking the Power of Data (Lock5)</li>
-<li>Intorduction to Statistiscal Investigations (Tintle et al)</li>
-<li>Statistical Slueth (Ramsey and Shafer)</li>
-<li>Introduction to the Practice of Statistics (Moore, McCabe, Craig)</li>
+<li><em>Statistics: Unlocking the Power of Data</em> (Lock5)</li>
+<li><em>Intorduction to Statistiscal Investigations</em> (Tintle et al)</li>
+<li><em>Statistical Slueth</em> (Ramsey and Shafer)</li>
+<li><em>Introduction to the Practice of Statistics</em> (Moore, McCabe, Craig)</li>
+<li><em>Stats: Data and Models</em> (De Veaux, Velleman, Bock)</li>
 </ul></li>
 </ul>
 </section><section id="elsewhere-at-ecots" class="slide level2">
