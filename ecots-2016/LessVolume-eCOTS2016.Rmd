@@ -975,8 +975,8 @@ Additional R skills can be added as needed later.
  
  * [Resources Vignette](https://github.com/ProjectMOSAIC/mosaic/blob/master/vignettes/mosaic-resources.Rmd) includes links to companion volumes to several text books.
       * *Statistics: Unlocking the Power of Data* (Lock5)
-      * *Introduction to Statistiscal Investigations* (Tintle et al)
-      * *Statistical Slueth* (Ramsey and Shafer)
+      * *Introduction to Statistical Investigations* (Tintle et al)
+      * *Statistical Sleuth* (Ramsey and Shafer)
       * *Introduction to the Practice of Statistics* (Moore, McCabe, Craig)
       * *Stats: Data and Models* (De Veaux, Velleman, Bock)
 
