@@ -13,10 +13,33 @@ output:
 ---
 
 
+## How to play along from home
+
+  * You can use your own R, but make sure `mosaic` is installed from CRAN (or github)
+  
+```{r, eval=FALSE}
+# install from CRAN
+install.packages("mosaic")  
+```
+
+  * You can use a temporary RStudio server account
+  
+    * get username and password at 
+      [http://tinyurl.com/ecots-rstudio](http://tinyurl.com/ecots-rstudio)  
+      
+  * Be sure to attach the `mosaic` package
+
+```{r, message = FALSE}
+require(mosaic)
+```
+    
+  * Slides are available at
+    [http://tinyurl.com/mosaic-ecots2016](http://tinyurl.com/mosaic-ecots2016)
+
 ## Outline
 
  * Introduction to Less Volume, More Creativity Approach
- * The most important template
+ * **The most important template**
  * A few other things
  * Simulation-based inference
  
@@ -34,6 +57,7 @@ trellis.par.set(theme = col.mosaic())
 require(knitr)
 opts_chunk$set(size = 'tiny', tidy = FALSE, cache=TRUE, fig.align="center")
 options(width = 120)
+options(digits = 4)
 ```
 
 
@@ -98,17 +122,18 @@ Perfection is achieved, not when there is nothing more to add, but when there is
 
 ## The mosaic package
  
-The `mosaic` package attempts to facilitate a Less Volume, More Creativity
+The `mosaic` package facilitates a Less Volume, More Creativity
 approach.
 
   * available via CRAN and github (ProjectMOSAIC/mosaic)
+  * builds on things in `lattice` and other core R packages
   
 ### Main parts of the package
 
   * expanded support for the "formula template" (main topic today)
   * simplified graphics
   * support for simulation-based inference with `do()`
-  * some odds and ends
+  * some odds and ends (mostly driven by first and second course)
 
  
 ## The Minimal R Exercise
@@ -144,7 +169,7 @@ approach.
 ### If all else fails, try ESC
  * If you see a + prompt, it means R is waiting for more input
  * If this is unintentional, you probably have a typo
- * ESC will get you pack to the command prompt
+ * ESC will get you back to the command prompt
 
 # The most important template
 
@@ -310,11 +335,12 @@ bwplot( age ~ substance, data = HELPrct, xlab = "substance" )
 
 
 
-## What changes for this plot?
+## Coparing our first two plots
 
 
 ```{r, echo = TRUE, fig.height = 2.0}
 bwplot( age ~ substance, data = HELPrct)
+xyplot( births ~ date, data = Births78)
 ```
 
 ## How about this one?
@@ -330,7 +356,7 @@ bwplot( substance ~ age, data = HELPrct)
  * Variables: <code>age</code>, <code>substance</code>
  * use `?HELPrct` for info about data
 
-## How about this one?
+## Comparing two boxplots 
 
 
 ```{r, echo = TRUE, fig.height = 2.5}
@@ -506,10 +532,12 @@ Three ways to create a plot with two variables.
 All three can be used to get corresponding numerical summaries.
 
 ```{r, eval = FALSE}
-     xyplot(age ~ substance, data = HELPrct, jitter.x = TRUE)
+     bwplot(age ~ substance, data = HELPrct)
          sd(age ~ substance, data = HELPrct)
-     bwplot( ~ age | substance, data = HELPrct)
+         
+  histogram( ~ age | substance, data = HELPrct)
          sd( ~ age | substance, data = HELPrct)
+         
 densityplot( ~ age , groups = substance, data = HELPrct)
          sd( ~ age , groups = substance, data = HELPrct)
 ```
@@ -553,7 +581,7 @@ data(HELPrct)
  * hypothesis tests and confidence intervals
  * linear models
 
-### Example Workflow
+### Example Workflow: How does age differ by sex?
 
 ```{r, eval = FALSE}
   bwplot(age ~ sex, data = HELPrct) 
@@ -875,7 +903,7 @@ Equipped with a modest subset of R, students can be quite creative:
  * A list of goals
     * `xyplot()`, `bwplot()`, `histogram()`, etc.
     * `mean()`, `sd()`, `tally()`, `favstats()`, etc.
-    * `lm()` (`glm()`)
+    * `lm()`, `glm()`
     * `t.test()`, `binom.test()`, etc.
  * `do()`
  * a few bells as whistles as desired.
@@ -898,7 +926,11 @@ Additional R skills can be added as needed later.
  
  * [Resources Vignette](https://cdn.rawgit.com/ProjectMOSAIC/mosaic/master/vignettes/mosaic-resources.Rmd)
     * Available in package and via github
-    * Links to companion volumes for several texts (Lock5, ISI, Statistical Slueth, IPS)
+    * Links to companion volumes for several texts 
+      * Unlocking the Power of Data (Lock5)
+      * Intorduction to Statistiscal Investigations (Tintle et al)
+      * Statistical Slueth (Ramsey and Shafer)
+      * Introduction to the Practice of Statistics (Moore, McCabe, Craig)
 
 ## Elsewhere at eCOTS
 
